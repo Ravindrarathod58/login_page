@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>VELOX Cycles | Precision High-Performance Bicycles</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "background": "#0b0d11",
+            "surface": "#111317",
+            "surface-container-lowest": "#08090c",
+            "surface-container-low": "#12151b",
+            "surface-container": "#181c24",
+            "surface-container-high": "#1f242e",
+            "surface-container-highest": "#282e3a",
+            "surface-variant": "#222733",
+            "primary": "#ffffff",
+            "on-primary": "#0b0d11",
+            "primary-container": "#f1f5f9",
+            "on-primary-container": "#0b0d11",
+            "secondary": "#b4c5ff",
+            "on-surface": "#f1f5f9",
+            "on-surface-variant": "#94a3b8",
+            "outline": "#475569",
+            "outline-variant": "#272c38",
+            "border-subtle": "#1e232d"
+          },
+          fontFamily: {
+            "headline-xl": ["Space Grotesk", "sans-serif"],
+            "headline-lg": ["Space Grotesk", "sans-serif"],
+            "headline-md": ["Space Grotesk", "sans-serif"],
+            "headline-sm": ["Space Grotesk", "sans-serif"],
+            "body-xl": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "label-caps": ["Inter", "sans-serif"],
+            "label-tech": ["Space Grotesk", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-white selection:text-black min-h-screen">
+<!-- TOP MINIMAL ANNOUNCEMENT BAR -->
+<div class="w-full bg-surface-container-lowest border-b border-outline-variant/60 py-2 px-6 text-center text-xs tracking-wider font-label-caps text-on-surface-variant flex items-center justify-center gap-4">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-white/40"></span>
+<span class="tracking-[0.14em] uppercase text-[11px] text-slate-300">White-Glove Delivery &amp; 30-Day At-Home Evaluation Included on All Builds</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-white/40"></span>
+</div>
+<!-- PERSISTENT EDITORIAL HEADER -->
+<header class="sticky top-0 left-0 right-0 z-50 bg-[#0b0d11]/90 backdrop-blur-md border-b border-outline-variant/70">
+<div class="max-w-7xl mx-auto h-20 px-6 sm:px-8 flex items-center justify-between">
+<!-- Left: Logo & Core Categories -->
+<div class="flex items-center gap-12">
+<a class="flex items-center gap-3 group" data-path="store-front" href="#">
+<img alt="VELOX Cycles Logo" class="h-6 w-auto object-contain filter invert opacity-90 transition-opacity group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1V92eLgrBQndhLywxXnWXb8rMoYCDqooMSoxRitOpP38TGpE4XZAeKJ8Otp1wV-0ZHkcvUd-MpdSdu3ysGFX-6FfXsJDT2SQB2h3Il-fbCAKa2p25T4W64tcP75TvvwJE9ApyTB5or403T6-TK8AbRbXtpV-gTWHOOk6hY83HadXLTzjD2qQ0bKadwathxHcJSuzi_gvrJDkKYE80yaDUIfBkyM1QXPvwl5WwAyp7bMW8WOuDRa85BzSfg"/>
+<span class="font-headline-sm text-lg font-bold tracking-[0.2em] text-white uppercase">VELOX</span>
+</a>
+<nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wider uppercase text-on-surface-variant">
+<a class="hover:text-white transition-colors" data-path="bikes" href="#">Road</a>
+<a class="hover:text-white transition-colors" data-path="bikes" href="#">Gravel</a>
+<a class="hover:text-white transition-colors" data-path="bikes" href="#">Mountain</a>
+<a class="hover:text-white transition-colors" data-path="technology" href="#">Technology</a>
+<a class="hover:text-white transition-colors" data-path="custom-studio" href="#">Custom Studio</a>
+</nav>
+</div>
+<!-- Right: Search, Region, Cart -->
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-center relative text-on-surface-variant hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<a class="hidden sm:flex items-center gap-1 text-[13px] text-on-surface-variant hover:text-white tracking-wide transition-colors" data-path="find-a-dealer" href="#">
+<span>Dealers</span>
+</a>
+<a class="text-on-surface-variant hover:text-white transition-colors" data-path="account" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface hover:text-white px-3 py-1.5 rounded border border-outline-variant hover:border-slate-500 bg-surface-container-low transition-colors" data-path="cart" href="#">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span class="text-xs font-medium tracking-wide">Cart (0)</span>
+</a>
+</div>
+</div>
+</header>
+<main class="w-full">
+<!-- SECTION 1: HERO DISPLAY (Pure, Calm, Editorial Precision) -->
+<section class="relative w-full border-b border-outline-variant/60 bg-gradient-to-b from-[#0b0d11] via-[#0e1117] to-[#12151b] pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
+<!-- Subtle Ambient Vignette -->
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(148,163,184,0.06),rgba(0,0,0,0))] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+<!-- Hero Header Copy -->
+<div class="max-w-3xl mb-12 lg:mb-16">
+<div class="inline-flex items-center gap-2 mb-4 text-xs font-label-caps tracking-[0.2em] text-on-surface-variant uppercase">
+<span>VELOX Flagship 2025</span>
+<span class="text-slate-600">/</span>
+<span>Aero-X SL Team Edition</span>
+</div>
+<h1 class="font-headline-xl text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white leading-[1.08] uppercase">
+            PRECISION IN MOTION.
+          </h1>
+<p class="mt-5 text-base sm:text-lg text-on-surface-variant max-w-2xl font-light leading-relaxed">
+            Constructed from Torayca T1100G monocoque carbon. Integrated cockpit aerodynamics engineered to minimize drag and elevate pure power transfer.
+          </p>
+<!-- Understated Action Buttons -->
+<div class="mt-8 flex flex-wrap items-center gap-4">
+<a class="px-7 py-3.5 rounded bg-white hover:bg-slate-200 text-black font-medium text-sm tracking-wide transition-all shadow-sm" data-path="bikes" href="#spotlight">
+              Explore the Machine
+            </a>
+<a class="px-7 py-3.5 rounded bg-surface-container-high/80 hover:bg-surface-container-highest border border-outline-variant text-white font-medium text-sm tracking-wide transition-all" data-path="find-a-dealer" href="#">
+              Book Test Ride
+            </a>
+</div>
+</div>
+<!-- Hero Bicycle Presentation Stage -->
+<div class="relative w-full aspect-[16/9] max-h-[560px] rounded-xl border border-outline-variant/60 bg-surface-container-low/60 p-6 sm:p-10 flex items-center justify-center">
+<img class="w-full h-full object-contain filter drop-shadow-[0_25px_35px_rgba(0,0,0,0.85)]" data-alt="Side profile aerodynamic race bicycle, pure matte raw carbon finish with neon volt accents, ultralight deep section carbon aero wheels, integrated wireless cockpit, isolated against a dark minimal studio wind tunnel with soft backlighting and dramatic aerodynamic rim glows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXBHKxfuPXZ_xf1VAZCX0MJhZPDkt7A87qTdrMgAUOU-gQ0A4ClQLSBrjQYkcQc784oFLG2VvqP8cKLScbVcbP35oavjHT1J_4nbIPBM5k6scSvsyMmDA9h5LzWBuj6qTznvxB-zlqUgr1gzbrbZ-NpoPuGRm60br-rSyQ1uGhaF9kJO9CEmBphBSz4YDP4_x4T7H1IDlzKk1xsHb3_iTHzBTukvbYgAZfBtZ2oUIBnyH2SVxhBsTfAA"/>
+</div>
+<!-- Clean Key Technical Specifications Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 pt-8 border-t border-outline-variant/50 text-left">
+<div>
+<div class="text-xs uppercase tracking-wider text-on-surface-variant font-label-caps">Frame Weight</div>
+<div class="text-xl sm:text-2xl font-headline-sm text-white font-medium mt-1">6.85 kg</div>
+<div class="text-xs text-slate-500 mt-0.5">Complete Size 54 module</div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-wider text-on-surface-variant font-label-caps">Carbon Fiber</div>
+<div class="text-xl sm:text-2xl font-headline-sm text-white font-medium mt-1">Torayca T1100G</div>
+<div class="text-xs text-slate-500 mt-0.5">High-modulus monocoque</div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-wider text-on-surface-variant font-label-caps">Drivetrain</div>
+<div class="text-xl sm:text-2xl font-headline-sm text-white font-medium mt-1">SRAM RED AXS</div>
+<div class="text-xs text-slate-500 mt-0.5">Wireless electronic 12-spd</div>
+</div>
+<div>
+<div class="text-xs uppercase tracking-wider text-on-surface-variant font-label-caps">Wheel System</div>
+<div class="text-xl sm:text-2xl font-headline-sm text-white font-medium mt-1">Zipp 454 NSW</div>
+<div class="text-xs text-slate-500 mt-0.5">58mm Tubeless Carbon Disc</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: REFINED DISCIPLINE CATALOG -->
+<section class="w-full bg-[#0b0d11] py-20 lg:py-28 border-b border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<span class="text-xs font-label-caps uppercase tracking-[0.2em] text-on-surface-variant">The Lineup</span>
+<h2 class="font-headline-lg text-3xl sm:text-4xl text-white font-medium tracking-tight uppercase mt-2">Bikes by Discipline</h2>
+</div>
+<p class="text-sm text-on-surface-variant max-w-md font-light">
+            Each chassis is purpose-built to deliver exceptional handling, aerodynamics, and structural efficiency in its natural terrain.
+          </p>
+</div>
+<!-- 4 Minimal Product Category Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Road -->
+<a class="group rounded-lg border border-outline-variant/70 bg-surface-container-low/70 p-6 flex flex-col justify-between hover:border-slate-500 transition-all duration-300" data-path="bikes" href="#">
+<div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant uppercase tracking-wider">
+<span>Aero &amp; Tarmac</span>
+<span class="text-slate-500 font-mono">01</span>
+</div>
+<h3 class="font-headline-sm text-xl text-white font-medium mt-3 group-hover:text-slate-200 transition-colors">Road Racing</h3>
+<p class="text-xs text-on-surface-variant mt-2 font-light leading-relaxed">Engineered for pure speed, sprint stiffness, and low aerodynamic drag.</p>
+</div>
+<div class="my-8 aspect-[4/3] rounded bg-surface-container-lowest/70 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-500" data-alt="High performance carbon aero road racing bicycle with integrated drop bars, deep carbon aerodynamic rims, raw black carbon with volt yellow fork detailing, high-tech studio photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm0MFRn4rzI3tT13HZcULBrEAJDXcIJWpgfd5tp48g4UgPnvQQ5q7V9zDB9gwI7cYyzdXyOO1oBW6D2yW-wYhEVDwRBOeFrqjhaw-CcQvuCzEOdU1Yw4i6DqJPEamU9116nnbdByxtbEx01QRsbw_QMqYNRbkL2QQHES2FtfAZxAA3sXqliBjZiBrSsIGmfBw_dWzw18-fVVSf15Fpsoo58zCyHmeEFFNkbckx0S3tGIX_efjIXs9bLw"/>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/40">
+<span class="text-xs text-on-surface-variant">From $6,499</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all">arrow_forward</span>
+</div>
+</a>
+<!-- Gravel -->
+<a class="group rounded-lg border border-outline-variant/70 bg-surface-container-low/70 p-6 flex flex-col justify-between hover:border-slate-500 transition-all duration-300" data-path="bikes" href="#">
+<div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant uppercase tracking-wider">
+<span>All-Road &amp; Endurance</span>
+<span class="text-slate-500 font-mono">02</span>
+</div>
+<h3 class="font-headline-sm text-xl text-white font-medium mt-3 group-hover:text-slate-200 transition-colors">Gravel</h3>
+<p class="text-xs text-on-surface-variant mt-2 font-light leading-relaxed">50mm clearance, progressive compliance stays, and bikepacking integration.</p>
+</div>
+<div class="my-8 aspect-[4/3] rounded bg-surface-container-lowest/70 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-500" data-alt="Modern all-road carbon gravel racing bike with wide flared handlebars, wide gravel tubeless tires, olive drab and matte black carbon finish with integrated bikepacking frame bags, dramatic studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBND-Mh3v7tOHHDnd7cqHRY-RZLkcOLWoipzODyMsDpJpdGv3_wwF5aZtMsqNbkaXq-GfXY32lHYmgqLHf-d_lh6NZ3vn9jfA1tJLJuH0KzQwMpQOqVBbVcfAYZYLiaXxPUtei_zy5aWgOIXFRMdWr_O8fHC4FYuIW3hO-Wu3YydrQLWyI0zvFCUuFyseO0gntjrb08z2hhlmgJw9R7WNNQ3fHoQAq0fmV0VEzjMfa-ZbUK1JtTOMxqSg"/>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/40">
+<span class="text-xs text-on-surface-variant">From $4,199</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all">arrow_forward</span>
+</div>
+</a>
+<!-- Mountain -->
+<a class="group rounded-lg border border-outline-variant/70 bg-surface-container-low/70 p-6 flex flex-col justify-between hover:border-slate-500 transition-all duration-300" data-path="bikes" href="#">
+<div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant uppercase tracking-wider">
+<span>Trail &amp; Enduro</span>
+<span class="text-slate-500 font-mono">03</span>
+</div>
+<h3 class="font-headline-sm text-xl text-white font-medium mt-3 group-hover:text-slate-200 transition-colors">Mountain</h3>
+<p class="text-xs text-on-surface-variant mt-2 font-light leading-relaxed">Progressive 170mm carbon link chassis tuned for steep terrain confidence.</p>
+</div>
+<div class="my-8 aspect-[4/3] rounded bg-surface-container-lowest/70 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-500" data-alt="Full-suspension carbon enduro mountain bike, 29 inch knobby downhill tires, gold Kashima coated shock dampers, raw forged carbon chassis, dramatic directional rim illumination" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo6GCAbxLjNmBwlODHBjH-WdLo4WE5Ds0XuAQYbrs-J2ZAymYPkoS3IFSn2oGqATVKOLycBJ-62FZ0Z5698UhoO2vbjKwpHHHca5vBsh43pxasQEJPDviNS6P8Yubhszb3gUfIMR2U6bwdRMVy-BlJxe2_2Zlat7Rq6yoegDdsH8D3ur6hXYeooYMjrEPYfCrZbm-zLR-biU88ma5PCTk8oStPInnysfm_0rli-g1m3ieW1q5jgixgAw"/>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/40">
+<span class="text-xs text-on-surface-variant">From $5,899</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all">arrow_forward</span>
+</div>
+</a>
+<!-- E-Performance -->
+<a class="group rounded-lg border border-outline-variant/70 bg-surface-container-low/70 p-6 flex flex-col justify-between hover:border-slate-500 transition-all duration-300" data-path="bikes" href="#">
+<div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant uppercase tracking-wider">
+<span>Stealth Assist</span>
+<span class="text-slate-500 font-mono">04</span>
+</div>
+<h3 class="font-headline-sm text-xl text-white font-medium mt-3 group-hover:text-slate-200 transition-colors">E-Performance</h3>
+<p class="text-xs text-on-surface-variant mt-2 font-light leading-relaxed">Integrated lightweight powertrain offering seamless natural pedal assist.</p>
+</div>
+<div class="my-8 aspect-[4/3] rounded bg-surface-container-lowest/70 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-500" data-alt="Ultra lightweight minimalist e-bike with integrated internal bottom bracket motor and sleek down tube battery, aerodynamic carbon handlebars, dark slate and cyan accents, clean studio shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5VJAeIXjWCqVNer8qh7ptF6DSR0fiCJBg1bMFCFNk_dVrWsGRZH-hX34dUFMvttnmh-dDbsz7GDenNp2koizhIe6F8VFmowRdgaIGnWrkMUrOYttmSpelQdXaw3LzmvSwS2TRONnrQouI0ch46C0t4DgurKpExu_gnA5UKXeNXtRPHey0mLxhqfqRuPNIQXsO0RpJZbAaUSNT4zwdCRq7FXuy5d76VQ2LA77o3T0JgomrPjhrZY54mA"/>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/40">
+<span class="text-xs text-on-surface-variant">From $4,850</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all">arrow_forward</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION 3: STREAMLINED PRODUCT SPOTLIGHT -->
+<section class="w-full bg-[#12151b] py-20 lg:py-28 border-b border-outline-variant/60" id="spotlight">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="mb-10">
+<span class="text-xs font-label-caps uppercase tracking-[0.2em] text-on-surface-variant">Flagship Build</span>
+<h2 class="font-headline-lg text-3xl sm:text-4xl text-white font-medium uppercase tracking-tight mt-2">VELOX Aero-X SL</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left: Clean Bike Viewport (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="w-full aspect-[16/11] rounded-lg border border-outline-variant/80 bg-surface-container-lowest p-8 flex items-center justify-center relative">
+<img class="max-h-full max-w-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)]" data-alt="Extreme close up studio render of a high-end matte carbon fiber racing bicycle frame with lime green aerodynamic accents, SRAM Red electronic drivetrain, CeramicSpeed gold oversized pulley wheels, in a high-tech wind tunnel chamber" id="spotlightImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZEI2nv2uh3q-a_1SGCkQRNaGTVY6cCdjjvRt90jXz85dimOb_7eZu7vKD7scT61CxKsegl7aeqi6Jil2Hl12WEe7zd6Yld-lINT2b6gFT0zkJE9Vm_GJWTnnDRm3SbDA4oVTy9n5EIHg6LyLvyr5JIEZJ-semYOtGl7yzVRZNsg2PmIf83dSgdMZ1S2QddEqMJPhXEzf59nA2NBnNRoaSgMQrETYuwdMJsz0ZfmjMMj2IKlOFLwBvuw"/>
+</div>
+<!-- Subtle Color Selection -->
+<div class="flex items-center justify-between px-5 py-3.5 rounded-lg border border-outline-variant/60 bg-surface-container-low text-xs text-on-surface-variant">
+<span>Finish: <strong class="text-white ml-1 font-medium" id="activeColorName">Matte Carbon Raw</strong></span>
+<div class="flex items-center gap-2">
+<button class="color-btn w-6 h-6 rounded-full bg-[#1A1F29] ring-2 ring-white transition-all" data-name="Matte Carbon Raw" title="Matte Carbon Raw" type="button"></button>
+<button class="color-btn w-6 h-6 rounded-full bg-[#374151] hover:ring-1 hover:ring-white transition-all" data-name="Slate Titanium" title="Slate Titanium" type="button"></button>
+<button class="color-btn w-6 h-6 rounded-full bg-[#E2E8F0] hover:ring-1 hover:ring-white transition-all" data-name="Ghost White" title="Ghost White" type="button"></button>
+</div>
+</div>
+</div>
+<!-- Right: Pricing, Specs & Order (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="p-8 rounded-lg border border-outline-variant/80 bg-surface-container-low flex flex-col gap-6">
+<div class="flex items-baseline justify-between border-b border-outline-variant/60 pb-6">
+<div>
+<div class="text-xs uppercase tracking-wider text-on-surface-variant font-label-caps">Team Edition Complete</div>
+<div class="text-3xl font-headline-md text-white font-medium mt-1">$9,299 <span class="text-xs text-slate-400 font-normal">USD</span></div>
+</div>
+<div class="text-right text-xs text-on-surface-variant">
+<span>Available in 48h</span>
+<div class="text-slate-500 mt-0.5">Free global courier</div>
+</div>
+</div>
+<!-- Streamlined Spec Checklist -->
+<div class="space-y-3 text-xs text-slate-300">
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Chassis</span>
+<span class="font-medium text-white">Torayca T1100G Carbon (6.85kg)</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Groupset</span>
+<span class="font-medium text-white">SRAM RED AXS Wireless 12-Speed</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Wheelset</span>
+<span class="font-medium text-white">Zipp 454 NSW Carbon Clincher</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Cockpit</span>
+<span class="font-medium text-white">Velox Integrated Aero One-Piece</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant">Power Meter</span>
+<span class="font-medium text-white">Quarq Dual-Sided Integrated</span>
+</div>
+</div>
+<!-- Sizing Module -->
+<div>
+<div class="flex items-center justify-between mb-3 text-xs">
+<span class="text-on-surface-variant uppercase tracking-wider font-label-caps">Frame Size</span>
+<button class="text-slate-300 hover:text-white underline transition-colors" type="button">Size Guide</button>
+</div>
+<div class="grid grid-cols-5 gap-2">
+<button class="size-btn py-2.5 rounded border border-outline-variant hover:border-slate-400 text-xs text-on-surface-variant hover:text-white transition-colors" type="button">49 (XS)</button>
+<button class="size-btn py-2.5 rounded border border-outline-variant hover:border-slate-400 text-xs text-on-surface-variant hover:text-white transition-colors" type="button">52 (S)</button>
+<button class="size-btn active py-2.5 rounded bg-white text-black font-semibold text-xs transition-colors" type="button">54 (M)</button>
+<button class="size-btn py-2.5 rounded border border-outline-variant hover:border-slate-400 text-xs text-on-surface-variant hover:text-white transition-colors" type="button">56 (L)</button>
+<button class="size-btn py-2.5 rounded border border-outline-variant hover:border-slate-400 text-xs text-on-surface-variant hover:text-white transition-colors" type="button">58 (XL)</button>
+</div>
+</div>
+<!-- Action CTAs -->
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full py-3.5 rounded bg-white hover:bg-slate-200 text-black font-semibold text-sm tracking-wide transition-all shadow-sm flex items-center justify-center gap-2" type="button">
+<span>Order Build — $9,299</span>
+</button>
+<a class="w-full py-3 rounded border border-outline-variant hover:border-slate-400 bg-surface-container-high/60 text-white font-medium text-xs tracking-wider uppercase text-center transition-colors" data-path="custom-studio" href="#">
+                  Configure in Custom Studio
+                </a>
+</div>
+<!-- Quiet Value Indicators -->
+<div class="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-outline-variant/40">
+<span>Direct Assembled</span>
+<span>•</span>
+<span>Lifetime Warranty</span>
+<span>•</span>
+<span>30-Day Evaluation</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: VALUE PROPOSITIONS (Clean 4-Pillar Grid) -->
+<section class="w-full bg-[#0b0d11] py-20 lg:py-28 border-b border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="max-w-2xl mb-16">
+<span class="text-xs font-label-caps uppercase tracking-[0.2em] text-on-surface-variant">The Foundation</span>
+<h2 class="font-headline-lg text-3xl sm:text-4xl text-white font-medium uppercase tracking-tight mt-2">Engineered Without Compromise</h2>
+<p class="mt-4 text-sm text-on-surface-variant font-light leading-relaxed">
+            Every Velox bicycle represents a direct connection between computer-modeled aerodynamic efficiency and world-class riding feel.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="border-t border-outline-variant/70 pt-6 flex flex-col justify-between">
+<div>
+<div class="text-xs font-mono text-slate-500 mb-4">01</div>
+<h3 class="font-headline-sm text-lg text-white font-medium mb-3">Precision Aerodynamics</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed font-light">
+                Truncated aerofoil tube geometry tuned to balance high-speed yaw with lateral stability in variable crosswinds.
+              </p>
+</div>
+</div>
+<div class="border-t border-outline-variant/70 pt-6 flex flex-col justify-between">
+<div>
+<div class="text-xs font-mono text-slate-500 mb-4">02</div>
+<h3 class="font-headline-sm text-lg text-white font-medium mb-3">Direct-to-Rider Build</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed font-light">
+                Factory calibrated and delivered 95% complete in dedicated flight cases with pre-adjusted electronic shifting.
+              </p>
+</div>
+</div>
+<div class="border-t border-outline-variant/70 pt-6 flex flex-col justify-between">
+<div>
+<div class="text-xs font-mono text-slate-500 mb-4">03</div>
+<h3 class="font-headline-sm text-lg text-white font-medium mb-3">Lifetime Frame Warranty</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed font-light">
+                Original registered owners receive comprehensive structural frame coverage and dedicated crash replacement support.
+              </p>
+</div>
+</div>
+<div class="border-t border-outline-variant/70 pt-6 flex flex-col justify-between">
+<div>
+<div class="text-xs font-mono text-slate-500 mb-4">04</div>
+<h3 class="font-headline-sm text-lg text-white font-medium mb-3">30-Day Evaluation</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed font-light">
+                Ride your Velox machine on your home roads. If the fit or ride quality does not meet expectations, return for full credit.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: EDITORIAL ATHLETE TESTIMONIALS -->
+<section class="w-full bg-[#12151b] py-20 lg:py-24 border-b border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<span class="text-xs font-label-caps uppercase tracking-[0.2em] text-on-surface-variant">Rider Accounts</span>
+<h2 class="font-headline-lg text-3xl text-white font-medium uppercase tracking-tight mt-2">Tested in Competition</h2>
+</div>
+<span class="text-xs text-slate-500">Verified owners &amp; competitive racers</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-lg border border-outline-variant/70 bg-surface-container-low flex flex-col justify-between">
+<p class="text-sm text-slate-300 font-light leading-relaxed italic">
+              "The power transfer when standing out of the saddle is instantaneous. In stiff crosswinds, the front end tracks completely true without hesitation."
+            </p>
+<div class="mt-6 pt-4 border-t border-outline-variant/40 flex items-center justify-between text-xs">
+<span class="font-medium text-white">Marcus Thorne</span>
+<span class="text-slate-500">Aero-X SL Owner</span>
+</div>
+</div>
+<div class="p-6 rounded-lg border border-outline-variant/70 bg-surface-container-low flex flex-col justify-between">
+<p class="text-sm text-slate-300 font-light leading-relaxed italic">
+              "Completed two 70.3 races this season on the Aero platform. Packing and reassembling using the integrated cockpit was effortless."
+            </p>
+<div class="mt-6 pt-4 border-t border-outline-variant/40 flex items-center justify-between text-xs">
+<span class="font-medium text-white">Elena Lindqvist</span>
+<span class="text-slate-500">Triathlon Competitor</span>
+</div>
+</div>
+<div class="p-6 rounded-lg border border-outline-variant/70 bg-surface-container-low flex flex-col justify-between">
+<p class="text-sm text-slate-300 font-light leading-relaxed italic">
+              "Rode the Terra-Cross over 200 miles of Flint Hills gravel. The compliant rear stays absorb relentless chatter while retaining race responsiveness."
+            </p>
+<div class="mt-6 pt-4 border-t border-outline-variant/40 flex items-center justify-between text-xs">
+<span class="font-medium text-white">Dave Ramirez</span>
+<span class="text-slate-500">Terra-Cross GR Owner</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: MINIMALIST CALL TO ACTION BANNER -->
+<section class="w-full bg-[#0b0d11] py-20 lg:py-24">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="p-10 lg:p-14 rounded-xl border border-outline-variant/70 bg-surface-container-low flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+<div class="max-w-xl">
+<span class="text-xs font-label-caps uppercase tracking-[0.2em] text-on-surface-variant">Direct Allocation</span>
+<h2 class="font-headline-lg text-2xl sm:text-3xl text-white font-medium uppercase tracking-tight mt-2">
+              Order Your 2025 Chassis
+            </h2>
+<p class="mt-3 text-sm text-on-surface-variant font-light leading-relaxed">
+              Limited production batches assembled to rider specification. Secure your build slot or schedule a consultation with our master mechanics.
+            </p>
+</div>
+<div class="flex flex-wrap items-center gap-4 shrink-0">
+<a class="px-7 py-3.5 rounded bg-white hover:bg-slate-200 text-black font-semibold text-sm tracking-wide transition-all" data-path="bikes" href="#">
+              View All Builds
+            </a>
+<a class="px-7 py-3.5 rounded border border-outline-variant hover:border-slate-400 bg-surface-container-high/60 text-white font-medium text-sm tracking-wide transition-all" data-path="find-a-dealer" href="#">
+              Find a Studio
+            </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- SOPHISTICATED EDITORIAL FOOTER -->
+<footer class="w-full bg-[#08090c] border-t border-outline-variant/70 text-on-surface-variant">
+<div class="max-w-7xl mx-auto px-6 sm:px-8 py-16 lg:py-20">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+<!-- Brand Info -->
+<div class="col-span-2 lg:col-span-1 pr-4">
+<div class="flex items-center gap-2 mb-4">
+<span class="font-headline-sm text-lg font-bold tracking-[0.2em] text-white uppercase">VELOX</span>
+</div>
+<p class="text-xs text-on-surface-variant font-light leading-relaxed mb-6">
+            Designed and engineered for uncompromising cycling performance. Hand-assembled in limited quantities.
+          </p>
+<div class="text-[11px] text-slate-500 uppercase tracking-wider font-mono">
+            Munich · Boulder · Zurich
+          </div>
+</div>
+<!-- Links Columns -->
+<div>
+<div class="text-xs font-label-caps uppercase tracking-wider text-white mb-4">Road</div>
+<ul class="space-y-2.5 text-xs font-light">
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">Aero-X SL</a></li>
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">Strada Carbon</a></li>
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">Chronos TT</a></li>
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">Frameset Modules</a></li>
+</ul>
+</div>
+<div>
+<div class="text-xs font-label-caps uppercase tracking-wider text-white mb-4">Gravel &amp; Trail</div>
+<ul class="space-y-2.5 text-xs font-light">
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">Terra-Cross GR</a></li>
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">Outland Expedition</a></li>
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">Vortex Enduro 170</a></li>
+<li><a class="hover:text-white transition-colors" data-path="bikes" href="#">VoltPulse Assist</a></li>
+</ul>
+</div>
+<div>
+<div class="text-xs font-label-caps uppercase tracking-wider text-white mb-4">Support</div>
+<ul class="space-y-2.5 text-xs font-light">
+<li><a class="hover:text-white transition-colors" data-path="frame-sizing" href="#">Geometry Guide</a></li>
+<li><a class="hover:text-white transition-colors" data-path="warranty" href="#">Warranty Terms</a></li>
+<li><a class="hover:text-white transition-colors" data-path="crash-replacement" href="#">Crash Replacement</a></li>
+<li><a class="hover:text-white transition-colors" data-path="find-a-dealer" href="#">Authorized Studios</a></li>
+</ul>
+</div>
+<div>
+<div class="text-xs font-label-caps uppercase tracking-wider text-white mb-4">Newsletter</div>
+<p class="text-xs font-light text-on-surface-variant mb-3">Private invitations to chassis allocations and releases.</p>
+<div class="flex items-center">
+<input class="w-full bg-surface-container border border-outline-variant rounded-l px-3 py-2 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-slate-300" placeholder="Email address" type="email"/>
+<button class="bg-white text-black px-3 py-2 rounded-r text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Join</button>
+</div>
+</div>
+</div>
+<!-- Bottom Compliance Strip -->
+<div class="mt-16 pt-8 border-t border-outline-variant/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+<div>© 2025 VELOX CYCLES AG. ALL RIGHTS RESERVED.</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-slate-400 transition-colors" data-path="privacy-policy" href="#">Privacy</a>
+<a class="hover:text-slate-400 transition-colors" data-path="terms-of-sale" href="#">Terms</a>
+<a class="hover:text-slate-400 transition-colors" data-path="cookie-settings" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Micro-Interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Color selector
+      const colorBtns = document.querySelectorAll('.color-btn');
+      const activeColorName = document.getElementById('activeColorName');
+
+      colorBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          colorBtns.forEach(b => {
+            b.classList.remove('ring-2', 'ring-white');
+            b.classList.add('hover:ring-1', 'hover:ring-white');
+          });
+          btn.classList.add('ring-2', 'ring-white');
+          btn.classList.remove('hover:ring-1');
+          if (activeColorName && btn.dataset.name) {
+            activeColorName.textContent = btn.dataset.name;
+          }
+        });
+      });
+
+      // Size selector
+      const sizeBtns = document.querySelectorAll('.size-btn');
+      sizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          sizeBtns.forEach(b => {
+            b.classList.remove('bg-white', 'text-black', 'font-semibold');
+            b.classList.add('border', 'border-outline-variant', 'text-on-surface-variant');
+          });
+          btn.classList.add('bg-white', 'text-black', 'font-semibold');
+          btn.classList.remove('border', 'border-outline-variant', 'text-on-surface-variant');
+        });
+      });
+    });
+  </script>
+</body></html>
